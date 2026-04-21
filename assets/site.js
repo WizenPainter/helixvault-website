@@ -64,6 +64,35 @@
   window.addEventListener('resize', onParallax);
   onParallax();
 
+  // Wave effect on feature small labels
+  var waveSmalls = document.querySelectorAll('.feature-text li small');
+  waveSmalls.forEach(function(el) {
+    var text = el.textContent;
+    el.innerHTML = '';
+    for (var i = 0; i < text.length; i++) {
+      var span = document.createElement('span');
+      span.className = 'wave-char';
+      span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+      el.appendChild(span);
+    }
+  });
+
+  function runWave() {
+    if (root.getAttribute('data-reduced-motion') === 'true') return;
+    waveSmalls.forEach(function(el) {
+      var chars = el.querySelectorAll('.wave-char');
+      chars.forEach(function(ch, i) {
+        setTimeout(function() {
+          ch.classList.add('lit');
+          setTimeout(function() { ch.classList.remove('lit'); }, 400);
+        }, i * 50);
+      });
+    });
+  }
+
+  setInterval(runWave, 5000);
+  setTimeout(runWave, 1500);
+
   // FAQ toggles
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => item.classList.toggle('open'));

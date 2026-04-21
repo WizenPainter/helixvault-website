@@ -245,6 +245,14 @@ p { margin: 0; }
 .feature-text li:last-child { border-bottom: 1px solid var(--border); }
 .feature-text li span { color: var(--text); }
 .feature-text li small { font-family: var(--font-mono); font-size: 11px; color: var(--text-faint); letter-spacing: 0.08em; }
+.feature-text li small .wave-char {
+  display: inline-block;
+  color: var(--text-faint);
+  transition: color 0.4s ease;
+}
+.feature-text li small .wave-char.lit {
+  color: var(--accent);
+}
 
 @media (max-width: 900px) {
   .feature-row { grid-template-columns: 1fr; gap: 40px; padding: 60px var(--pad); }
