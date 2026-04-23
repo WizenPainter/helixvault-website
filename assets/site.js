@@ -16,6 +16,16 @@
     onScroll();
   }
 
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+  }
+
   // IntersectionObserver for reveals
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
